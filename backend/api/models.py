@@ -1,9 +1,6 @@
 from django.db import models
 
 class Conversation(models.Model):
-    """
-    Representa uma conversa no sistema.
-    """
     # Estados possíveis para uma conversa
     STATUS_OPEN = 'OPEN'
     STATUS_CLOSED = 'CLOSED'
@@ -41,9 +38,6 @@ class Conversation(models.Model):
         ordering = ['-db_created_at']
 
 class Message(models.Model):
-    """
-    Representa uma mensagem dentro de uma conversa.
-    """
     # Tipos/Direções possíveis para uma mensagem
     TYPE_SENT = 'SENT'
     TYPE_RECEIVED = 'RECEIVED'
@@ -52,7 +46,6 @@ class Message(models.Model):
         (TYPE_RECEIVED, 'Recebida'),
     ]
 
-    # O ID virá do webhook e será um UUID.
     id = models.UUIDField(primary_key=True, editable=False) # Usaremos o ID do webhook
 
     # Relacionamento com a Conversa

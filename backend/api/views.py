@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import generics, views, response, status
 from .models import Conversation, Message
 from .serializers import ConversationSerializer, ConversationListSerializer
