@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, views, response, status
 from .models import Conversation, Message
-from .serializers import ConversationSerializer
+from .serializers import ConversationSerializer, ConversationListSerializer
 
 class ConversationDetailView(generics.RetrieveAPIView):
     queryset = Conversation.objects.all() # De onde buscar os objetos
@@ -138,3 +138,7 @@ class WebhookView(views.APIView):
                 {"error": f"Erro ao fechar conversa: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+class ConversationsListView(generics.ListAPIView):
+    queryset = Conversation.objects.all().order_by('-db_created_at')
+    serializer_class = ConversationListSerializer

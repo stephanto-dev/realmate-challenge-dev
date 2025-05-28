@@ -37,3 +37,14 @@ class ConversationSerializer(serializers.ModelSerializer):
             'initiated_at',     # Timestamp de quando a conversa foi efetivamente iniciada (do webhook)
             'messages',         # A lista de mensagens aninhadas
         ]
+
+class ConversationListSerializer(serializers.ModelSerializer):
+    initiated_at = serializers.DateTimeField(source='created_event_timestamp', read_only=True)
+
+    class Meta:
+        model = Conversation
+        fields = [
+            'id',
+            'status',
+            'initiated_at',
+        ]
