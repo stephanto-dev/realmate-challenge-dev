@@ -5,20 +5,14 @@ import ConversationDetailPage from './pages/ConversationDetailPage.tsx';
 
 const App: React.FC = () => {
   return (
-    <div className="container mx-auto p-4"> {/* Container básico com Tailwind */}
-      <Routes>
-        {/* Rota para a lista de conversas */}
-        <Route path="/conversations" element={<ConversationListPage />} />
-
-        {/* Rota para os detalhes de uma conversa específica */}
-        {/* O ':id' na URL será um parâmetro dinâmico */}
-        <Route path="/conversations/:id" element={<ConversationDetailPage />} />
-
-        {/* Rota padrão: redireciona de '/' para '/conversations' */}
-        <Route path="/" element={<Navigate replace to="/conversations" />} />
-
-        {/* <Route path="*" element={<div>Página Não Encontrada</div>} /> */}
-      </Routes>
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <main className="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <Routes>
+          <Route path="/conversations" element={<ConversationListPage />} />
+          <Route path="/conversations/:id" element={<ConversationDetailPage />} />
+          <Route path="/" element={<Navigate replace to="/conversations" />} />
+        </Routes>
+      </main>
     </div>
   );
 };

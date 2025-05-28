@@ -89,7 +89,8 @@ const ConversationDetailPage: React.FC = () => {
 
         <div className="bg-white shadow rounded-lg p-6 mb-6 border">
         <h1 className="text-2xl font-bold mb-2">
-            Conversa ID: ...{conversation.id.substring(conversation.id.length-12)}
+            {/* Conversa ID: ...{conversation.id.substring(conversation.id.length-12)} */}
+            ID da conversa: {conversation.id}
         </h1>
         <p className="text-sm text-gray-600 mb-1">
             Iniciada em: {formatToBrazilianDateTimeWithFns(conversation.initiated_at)}

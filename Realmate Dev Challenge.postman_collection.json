@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "49eb0df3-1231-4823-b4f0-03442f5da911",
+		"name": "Realmate Dev Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44823478",
+		"_collection_link": "https://stephanto-9974573.postman.co/workspace/Stephanto's-Workspace~c08f5b12-abd2-4fa8-80e6-611d1d6fad3e/collection/44823478-49eb0df3-1231-4823-b4f0-03442f5da911?action=share&source=collection_link&creator=44823478"
+	},
+	"item": [
+		{
+			"name": "Sucesso: Criar uma nova conversa (Conv1)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_CONVERSATION\",\r\n    \"timestamp\": \"2025-02-21T10:20:41.349308\",\r\n    \"data\": {\r\n        \"id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Tentar criar uma conversa com ID existente (Conv1)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_CONVERSATION\",\r\n    \"timestamp\": \"2025-02-21T10:20:41.349308\",\r\n    \"data\": {\r\n        \"id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Payload malformado (sem id em data)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_CONVERSATION\",\r\n    \"timestamp\": \"2025-02-21T10:20:41.349308\",\r\n    \"data\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sucesso: Adicionar mensagem RECEIVED à Conv1 (Msg1)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:42.349308\",\r\n    \"data\": {\r\n        \"id\": \"49108c71-4dca-4af3-9f32-61bc745926e2\",\r\n        \"direction\": \"RECEIVED\",\r\n        \"content\": \"Olá, tudo bem?\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sucesso: Adicionar mensagem SENT à Conv1 (Msg2)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:44.349308\",\r\n    \"data\": {\r\n        \"id\": \"16b63b04-60de-4257-b1a1-20a5154abc6d\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Tudo ótimo e você?\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Tentar adicionar mensagem com ID existente (Msg1)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:42.349308\",\r\n    \"data\": {\r\n        \"id\": \"49108c71-4dca-4af3-9f32-61bc745926e2\",\r\n        \"direction\": \"RECEIVED\",\r\n        \"content\": \"Olá, tudo bem?\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Adicionar mensagem a uma conversation_id inexistente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:43.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Teste\",\r\n        \"conversation_id\": \"c0000000-0000-0000-0000-000000000000\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: direction inválida",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:43.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"INVALID_DIRECTION\",\r\n        \"content\": \"Teste\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sucesso: Fechar Conv1 (que está OPEN e tem mensagens Msg1 e Msg2)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"CLOSE_CONVERSATION\",\r\n    \"timestamp\": \"2025-02-21T10:20:45.349308\",\r\n    \"data\": {\r\n        \"id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Adicionar mensagem (Msg3) a uma conversa CLOSED (Conv1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:48.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Tentando enviar para conversa fechada\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Tentar fechar uma conversation_id inexistente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:48.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Tentando enviar para conversa fechada\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Tipo de evento desconhecido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:48.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Tentando enviar para conversa fechada\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falha: Payload faltando campos de nível superior (ex: sem data)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_MESSAGE\",\r\n    \"timestamp\": \"2025-02-21T10:20:48.349308\",\r\n    \"data\": {\r\n        \"id\": \"m3333333-3333-3333-3333-333333333333\",\r\n        \"direction\": \"SENT\",\r\n        \"content\": \"Tentando enviar para conversa fechada\",\r\n        \"conversation_id\": \"6a41b347-8d80-4ce9-84ba-7af66f369f6a\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/webhook/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"webhook",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar Conv1 (que está CLOSED e tem Msg1 e Msg2)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"NEW_CONVERSATION\",\r\n    \"timestamp\": \"2025-02-21T10:20:41.349308\",\r\n    \"data\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/conversations/6a41b347-8d80-4ce9-84ba-7af66f369f6a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"conversations",
+						"6a41b347-8d80-4ce9-84ba-7af66f369f6a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

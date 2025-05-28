@@ -75,36 +75,49 @@ const ConversationListPage: React.FC = () => {
     }
 
     return (
-    <div className="space-y-4">
-        <h1 className="text-3xl font-bold mb-6">Conversas</h1>
-        {conversations.length === 0 ? (
-        <p>Nenhuma conversa encontrada.</p>
+        <div className="space-y-6"> {/* Adiciona espaçamento vertical geral */}
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Conversas</h1>
+        {error && <p className="text-destructive bg-destructive/10 p-3 rounded-md">Erro ao atualizar: {error}. Exibindo últimos dados carregados.</p>}
+        
+        {conversations.length === 0 && !isLoading ? (
+          <p className="text-muted-foreground">Nenhuma conversa encontrada.</p>
         ) : (
-        <Table>
-            <TableCaption>Uma lista das suas conversas recentes.</TableCaption>
+          <Table>
             <TableHeader>
-            <TableRow>
-                <TableHead>ID da Conversa</TableHead>
+              <TableRow>
+                <TableHead className="w-[250px] sm:w-[300px]">ID da Conversa</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Iniciada em</TableHead>
-            </TableRow>
+                <TableHead className="text-right">Iniciada em</TableHead>
+              </TableRow>
             </TableHeader>
             <TableBody>
-            {conversations.map((convo) => (
+              {conversations.map((convo) => (
                 <TableRow key={convo.id}>
-                <TableCell className="font-medium">
-                    <Link to={`/conversations/${convo.id}`} className="hover:underline">
-                    ...{convo.id.substring(convo.id.length - 12)}
+                  <TableCell className="font-medium">
+                    <Link to={`/conversations/${convo.id}`} className="text-primary hover:underline">
+                      {convo.id}
                     </Link>
-                </TableCell>
-                <TableCell>{convo.status}</TableCell>
-                <TableCell>{formatToBrazilianDateTimeWithFns(convo.initiated_at)}</TableCell>
+                  </TableCell>
+                  <TableCell>
+                    <span 
+                      className={`px-2 py-0.5 text-xs font-semibold rounded-full ${
+                        convo.status === 'OPEN' 
+                          ? 'bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100' 
+                          : 'bg-red-100 text-red-700 dark:bg-red-700 dark:text-red-100'
+                      }`}
+                    >
+                      {convo.status}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {formatToBrazilianDateTimeWithFns(convo.initiated_at)}
+                  </TableCell>
                 </TableRow>
-            ))}
+              ))}
             </TableBody>
-        </Table>
+          </Table>
         )}
-    </div>
+      </div>
     );
 };
 

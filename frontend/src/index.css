@@ -183,4 +183,25 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
   }
+
+  :root {
+    --background: oklch(0.17 0.018 260); /* Um azul bem escuro */
+    --foreground: oklch(
+      0.9 0.01 260
+    ); /* Texto quase branco, levemente azulado */
+
+    --card: oklch(0.2 0.02 260); /* Card um pouco mais claro que o fundo */
+    --card-foreground: oklch(0.9 0.01 260);
+
+    --primary: oklch(
+      0.65 0.15 280
+    ); /* Um roxo/magenta vibrante para destaque */
+    --primary-foreground: oklch(0.98 0 0); /* Texto branco para o primário */
+
+    --border: oklch(0.25 0.02 260); /* Borda sutil */
+    --input: oklch(0.25 0.02 260);
+    --ring: oklch(0.65 0.15 280 / 0.5); /* Anel de foco com a cor primária */
+
+    --radius: 0.75rem; /* Bordas mais arredondadas */
+  }
 }
