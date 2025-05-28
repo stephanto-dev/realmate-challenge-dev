@@ -58,11 +58,9 @@ O backend estará rodando em `http://localhost:8000` (ou outra porta se a 8000 e
 
 ### 2. Frontend (Interface React)
 
-**Navegue para a pasta do frontend** (`frontend/` ou o nome que você deu).
+**Navegue para a pasta do frontend** (`frontend/`).
 
 ```bash
-# cd frontend/
-
 # 1. Instalar as dependências:
 # (A flag --legacy-peer-deps é necessária devido a possíveis conflitos de dependências
 #  entre as bibliotecas utilizadas, como shadcn/ui e suas dependências com as do React/Vite).
