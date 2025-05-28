@@ -40,7 +40,7 @@ O projeto é dividido em duas partes principais: `backend` e `frontend`. Execute
 
 ### 1. Backend (API Django)
 
-**Navegue para a pasta raiz do projeto onde o backend está localizado.** (Ajuste conforme a estrutura do seu repositório, por exemplo, se houver uma pasta `backend/`).
+**Navegue para a pasta raiz do projeto onde o backend está localizado.** (`backend/`).
 
 ```bash
 # 1. Instalar as dependências com Poetry:
@@ -58,11 +58,10 @@ O backend estará rodando em `http://localhost:8000` (ou outra porta se a 8000 e
 
 ### 2. Frontend (Interface React)
 
-**Navegue para a pasta do frontend** (ex: `realmate-frontend/` ou o nome que você deu).
+**Navegue para a pasta do frontend** (`frontend/` ou o nome que você deu).
 
 ```bash
-# Exemplo:
-# cd realmate-frontend/
+# cd frontend/
 
 # 1. Instalar as dependências:
 # (A flag --legacy-peer-deps é necessária devido a possíveis conflitos de dependências
